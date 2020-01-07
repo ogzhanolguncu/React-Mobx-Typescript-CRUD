@@ -10,9 +10,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/revalidate": "^1.1.2",
+    "final-form": "^4.18.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-final-form": "^6.3.3",
     "react-scripts": "3.3.0",
+    "revalidate": "^1.2.0",
+    "semantic-ui-react": "^0.88.2",
     "typescript": "~3.7.2"
   },
   "scripts": {
