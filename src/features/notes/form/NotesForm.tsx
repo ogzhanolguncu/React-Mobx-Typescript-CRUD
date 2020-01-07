@@ -6,7 +6,6 @@ import TextInput from '../../../app/common/form/TextInput';
 import TextAreaInput from '../../../app/common/form/TextAreaInput';
 
 const NotesForm: React.FC = () => {
-    const formRef: any = React.useRef<HTMLFormElement>(null);
     const validate = combineValidators({
         title: isRequired({ message: 'Title is required.' }),
         description: isRequired({ message: 'Description is required' }),
@@ -14,9 +13,10 @@ const NotesForm: React.FC = () => {
     });
 
 
-    const handlerFinalFormSubmit = (values: any) => {
-        console.log(values);
-        console.log(formRef.handleSubmit.Scopes[3])
+    const handlerFinalFormSubmit = async (values: any) => {
+        console.log(values)
+        await new Promise(r => setTimeout(r, 1000));
+
     };
 
 
@@ -26,25 +26,33 @@ const NotesForm: React.FC = () => {
             <Header as='h2' dividing size='medium'>Note Details</Header>
             <Grid>
                 <Grid.Column width={11}>
-                        <FinalForm
-                            validate={validate}
-                            onSubmit={handlerFinalFormSubmit}
-                            render={({ handleSubmit, invalid, pristine, submitting}) => (
-                                <Form onSubmit={handleSubmit}>
-                                    <Field
-                                        name='title'
-                                        placeholder='Title'
-                                        component={TextInput}
-                                    />
-                                    <Field
-                                        placeholder='Description'
-                                        name='description'
-                                        rows={3}
-                                        component={TextAreaInput} />
-                                    <Button disabled={invalid || pristine ||submitting} floated='right' primary type='submit' content='Submit'></Button>
-                                    <Button floated='right' type='button' content='Cancel'></Button>
-                                </Form>
-                            )} />
+                    <FinalForm
+                        validate={validate}
+                        onSubmit={handlerFinalFormSubmit}
+                        render={({ handleSubmit, form, invalid, pristine, submitting }) => (
+                            <Form
+                                onSubmit={(event) => {
+                                    const promise = handleSubmit(event);
+                                    promise && promise.then(() => {
+                                        form.reset();
+                                    })
+                                    console.log(promise)
+                                    return promise;
+                                }}>
+                                <Field
+                                    name='title'
+                                    placeholder='Title'
+                                    component={TextInput}
+                                />
+                                <Field
+                                    placeholder='Description'
+                                    name='description'
+                                    rows={3}
+                                    component={TextAreaInput} />
+                                <Button disabled={invalid || pristine || submitting} floated='right' primary type='submit' content='Submit' loading={submitting ? true: false}></Button>
+                                <Button floated='right' type='button' content='Cancel' onClick={form.reset}></Button>
+                            </Form>
+                        )} />
                 </Grid.Column>
             </Grid>
         </Container>
