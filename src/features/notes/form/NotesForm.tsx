@@ -15,8 +15,6 @@ const NotesForm: React.FC = () => {
 
     const handlerFinalFormSubmit = async (values: any) => {
         console.log(values)
-        await new Promise(r => setTimeout(r, 1000));
-
     };
 
 
@@ -36,7 +34,6 @@ const NotesForm: React.FC = () => {
                                     promise && promise.then(() => {
                                         form.reset();
                                     })
-                                    console.log(promise)
                                     return promise;
                                 }}>
                                 <Field

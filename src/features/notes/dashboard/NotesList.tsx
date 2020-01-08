@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { List, Container, Header } from 'semantic-ui-react'
+import { RootStoreContext } from '../../../app/stores/rootStore'
 
 const NotesList: React.FC = () => {
+    const rootStore = useContext(RootStoreContext)
+    const { getNotesFromStore } = rootStore.noteStore;
     return (
         <Container>
             <Header as='h2' dividing size='medium'>Note List</Header>
-                <List selection animated style={{ margin: '10px' }}>
-                    <List.Item >
-                        <List.Header>New York City</List.Header>
-                        <List.Content >A lovely city</List.Content>
-                    </List.Item>
-                    <List.Item>
-                        <List.Header>Chicago</List.Header>
-                        Also quite a lovely city
-                    </List.Item>
-                    <List.Item>
-                        <List.Header>Los Angeles</List.Header>
-                        Sometimes can be a lovely city
-                    </List.Item>
-                    <List.Item>
-                        <List.Header>San Francisco</List.Header>
-                        What a lovely city
-                    </List.Item>
-                </List>
+            <List selection animated style={{ margin: '10px' }}>
+                {getNotesFromStore.map((note, index) => {
+                    return (
+                        <List.Item key={index}>
+                            <List.Header>{note.title}</List.Header>
+                            <List.Content >{note.description}</List.Content>
+                        </List.Item>
+                    )
+                })}
+            </List>
         </Container>
     )
 }
