@@ -5,7 +5,7 @@ import { Grid, Button, Form, Container, Header } from 'semantic-ui-react';
 import TextInput from '../../../app/common/form/TextInput';
 import TextAreaInput from '../../../app/common/form/TextAreaInput';
 import { RootStoreContext } from '../../../app/stores/rootStore';
-import { INote, NoteFormValues } from '../../../app/models/note';
+import { INote } from '../../../app/models/note';
 import { observer } from 'mobx-react-lite';
 
 
@@ -13,14 +13,16 @@ import { observer } from 'mobx-react-lite';
 
 const NotesForm: React.FC = () => {
     const rootStore = useContext(RootStoreContext)
-    const { createNote, submitting, editNote } = rootStore.noteStore;
+    const { createNote, submitting, editNote, selectNote, selectedItemId } = rootStore.noteStore;
 
-    // const [note , setNote] = useState(new NoteFormValues());
+    const [note , setNote] = useState();
 
-    // useEffect(() => {
-    //     let note = getSelectedItem();
-    //     setNote(new NoteFormValues(note))
-    //   }, [getSelectedItem]);
+    useEffect(() => {
+        if(!selectedItemId){}
+        let note = selectNote(selectedItemId!);
+        setNote(note);
+        console.log(note);
+      }, [selectedItemId,selectNote]);
 
       
     const validate = combineValidators({
@@ -51,6 +53,7 @@ const NotesForm: React.FC = () => {
                 <Grid.Column width={11}>
                     <FinalForm
                         validate={validate}
+                        initialValues={note}
                         onSubmit={handlerFinalFormSubmit}
                         render={({ handleSubmit, form, invalid, pristine }) => (
                             <Form

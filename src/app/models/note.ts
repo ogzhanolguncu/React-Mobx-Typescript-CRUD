@@ -4,17 +4,15 @@ export interface INote {
     description: string;
 }
 
-export interface INoteFormValues extends Partial<INote> {
-}
 
 
-export class NoteFormValues implements INoteFormValues {
-    id?: string = undefined;
-    title: string = '';
-    description: string = '';
+// export class NoteFormValues implements INote {
+//     id?: string = undefined;
+//     title: string = '';
+//     description: string = '';
 
-    constructor(init?: INoteFormValues) {
+//     constructor(init?: INote) {
 
-        Object.assign(this, init);
-    }
-}
+//         Object.assign(this, init);
+//     }
+// }

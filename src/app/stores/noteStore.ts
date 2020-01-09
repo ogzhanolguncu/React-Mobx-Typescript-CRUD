@@ -14,7 +14,7 @@ export default class NoteStore {
     @observable submitting: boolean = false;
     @observable loadingInitial: boolean = false;
     @observable noteConunt: number = 0;
-    @observable selectedItemId: string | null = null;
+    @observable selectedItemId: string | null= null;
 
     getNoteFromStore = (id: string): INote => {
         return this.noteRegistry.get(id);
@@ -25,13 +25,9 @@ export default class NoteStore {
         return Array.from(this.noteRegistry.values());
       };
 
-    @action setSelectedItemId = (id: string) => {
+    @action selectNote = (id: string) => {
         this.selectedItemId = id;
-    }
-
-    @action getSelectedItem() {
         let note = this.getNoteFromStore(this.selectedItemId!);
-        console.log(toJS(note));
         return toJS(note);
     }
 

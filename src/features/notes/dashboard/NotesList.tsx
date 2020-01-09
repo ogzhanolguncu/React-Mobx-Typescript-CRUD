@@ -6,7 +6,7 @@ import LoadingComponent from '../../../app/layout/LoadingComponent'
 
 const NotesList: React.FC = () => {
     const rootStore = useContext(RootStoreContext)
-    const { getNotesFromStore, loadingInitial, submitting, setSelectedItemId, deleteNote } = rootStore.noteStore;
+    const { getNotesFromStore, loadingInitial, submitting, selectNote, deleteNote } = rootStore.noteStore;
 
 
     if (loadingInitial || submitting) return <LoadingComponent content={"Loading notes..."} />
@@ -16,8 +16,8 @@ const NotesList: React.FC = () => {
                 <List selection animated style={{ margin: '10px' }}>
                     {getNotesFromStore.map((note, index) => {
                         return (
-                            <Fragment>
-                                <List.Item key={index} onClick={() => setSelectedItemId(note.id)} >
+                            <Fragment key={index}>
+                                <List.Item  onClick={() => selectNote(note.id)} >
                                 <List.Header >{note.title}  <Icon name='trash' onClick={() => deleteNote(note.id)}/></List.Header>
                                 <List.Content >{note.description}</List.Content>
                                
