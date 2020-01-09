@@ -14,14 +14,28 @@ export default class NoteStore {
     @observable submitting: boolean = false;
     @observable loadingInitial: boolean = false;
     @observable noteConunt: number = 0;
+    @observable selectedItemId: string | null = null;
 
     getNoteFromStore = (id: string): INote => {
         return this.noteRegistry.get(id);
     }
 
+
     @computed get getNotesFromStore() {
         return Array.from(this.noteRegistry.values());
       };
+
+    @action setSelectedItemId = (id: string) => {
+        this.selectedItemId = id;
+    }
+
+    @action getSelectedItem() {
+        let note = this.getNoteFromStore(this.selectedItemId!);
+        console.log(toJS(note));
+        return toJS(note);
+    }
+
+
 
     @action loadNote = async (id: string) => {
         let note = this.getNoteFromStore(id);
@@ -71,11 +85,13 @@ export default class NoteStore {
 
     @action createNote = async (note: INote) => {
         this.submitting = true;
+        console.log(1,this.submitting)
         try {
             await agent.Notes.create(note);
             runInAction('creating activity', () => {
                 this.noteRegistry.set(note.id, note);
                 this.submitting = false;
+                console.log(2,this.submitting)
             })
         } catch (error) {
             runInAction('create activity error', () => {
@@ -86,7 +102,7 @@ export default class NoteStore {
     }
 
 
-    @action editActivity = async (note: INote) => {
+    @action editNote  = async (note: INote) => {
         this.submitting = true;
         try {
             await agent.Notes.update(note);
@@ -102,6 +118,26 @@ export default class NoteStore {
             console.log(error);
         }
     }
+
+
+    @action deleteNote = async (
+        id: string
+      ) => {
+        this.loadingInitial = true;
+        try {
+          await agent.Notes.delete(id);
+          runInAction('deleting note', () => {
+            this.noteRegistry.delete(id);
+            this.loadingInitial = false;
+          });
+        } catch (error) {
+          runInAction('delete activity error', () => {
+            this.loadingInitial= false;
+          });
+          console.log(error);
+        }
+      };
+    
 
 
 

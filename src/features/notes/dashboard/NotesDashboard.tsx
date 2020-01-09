@@ -1,20 +1,19 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import { Grid, Container } from 'semantic-ui-react'
 import NotesForm from '../form/NotesForm';
-import NotesList from './NotesList';
 import { RootStoreContext } from '../../../app/stores/rootStore';
 import { observer } from 'mobx-react-lite';
+import NotesList from './NotesList';
 
 const Dashboard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
     const {
         loadNotes,
-        loadingInitial,
     } = rootStore.noteStore;
 
     useEffect(() => {
         loadNotes();
-      }, [loadNotes]);
+    }, [loadNotes]);
 
 
     return (
