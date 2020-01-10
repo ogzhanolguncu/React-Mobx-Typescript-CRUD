@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-mobx-typescript-crud/static/css/main.f2d36aa7.chunk.css",
-    "main.js": "/react-mobx-typescript-crud/static/js/main.688eafd5.chunk.js",
-    "main.js.map": "/react-mobx-typescript-crud/static/js/main.688eafd5.chunk.js.map",
-    "runtime-main.js": "/react-mobx-typescript-crud/static/js/runtime-main.b5846db1.js",
-    "runtime-main.js.map": "/react-mobx-typescript-crud/static/js/runtime-main.b5846db1.js.map",
-    "static/js/2.fdb271fd.chunk.js": "/react-mobx-typescript-crud/static/js/2.fdb271fd.chunk.js",
-    "static/js/2.fdb271fd.chunk.js.map": "/react-mobx-typescript-crud/static/js/2.fdb271fd.chunk.js.map",
-    "index.html": "/react-mobx-typescript-crud/index.html",
-    "precache-manifest.eb3146671cafe65517e9d654f432d411.js": "/react-mobx-typescript-crud/precache-manifest.eb3146671cafe65517e9d654f432d411.js",
-    "service-worker.js": "/react-mobx-typescript-crud/service-worker.js",
-    "static/css/main.f2d36aa7.chunk.css.map": "/react-mobx-typescript-crud/static/css/main.f2d36aa7.chunk.css.map",
-    "static/js/2.fdb271fd.chunk.js.LICENSE": "/react-mobx-typescript-crud/static/js/2.fdb271fd.chunk.js.LICENSE"
+    "main.css": "/React-Mobx-Typescript-CRUD/static/css/main.f2d36aa7.chunk.css",
+    "main.js": "/React-Mobx-Typescript-CRUD/static/js/main.e9970ebe.chunk.js",
+    "main.js.map": "/React-Mobx-Typescript-CRUD/static/js/main.e9970ebe.chunk.js.map",
+    "runtime-main.js": "/React-Mobx-Typescript-CRUD/static/js/runtime-main.7ec21dfc.js",
+    "runtime-main.js.map": "/React-Mobx-Typescript-CRUD/static/js/runtime-main.7ec21dfc.js.map",
+    "static/js/2.048df39b.chunk.js": "/React-Mobx-Typescript-CRUD/static/js/2.048df39b.chunk.js",
+    "static/js/2.048df39b.chunk.js.map": "/React-Mobx-Typescript-CRUD/static/js/2.048df39b.chunk.js.map",
+    "index.html": "/React-Mobx-Typescript-CRUD/index.html",
+    "precache-manifest.589c0c9e29f63e57819e958db0e9f4d8.js": "/React-Mobx-Typescript-CRUD/precache-manifest.589c0c9e29f63e57819e958db0e9f4d8.js",
+    "service-worker.js": "/React-Mobx-Typescript-CRUD/service-worker.js",
+    "static/css/main.f2d36aa7.chunk.css.map": "/React-Mobx-Typescript-CRUD/static/css/main.f2d36aa7.chunk.css.map",
+    "static/js/2.048df39b.chunk.js.LICENSE": "/React-Mobx-Typescript-CRUD/static/js/2.048df39b.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.b5846db1.js",
-    "static/js/2.fdb271fd.chunk.js",
+    "static/js/runtime-main.7ec21dfc.js",
+    "static/js/2.048df39b.chunk.js",
     "static/css/main.f2d36aa7.chunk.css",
-    "static/js/main.688eafd5.chunk.js"
+    "static/js/main.e9970ebe.chunk.js"
   ]
 }
